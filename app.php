@@ -14,6 +14,14 @@ function canCreateDescription()
 }
 
 
+class ReadingRoom
+{
+  public function requestDescription()
+  {
+    
+  }
+}
+
 
 class Description
 {
@@ -29,6 +37,14 @@ class Description
   {
     printf("Id: %s\n", $this->id);
   }
+
+  public function viewHistory()
+  {
+    if ($gateKeeper->canThisArchivistSeeChangeHistory($archivist, $this))
+    {
+      
+    }
+  }
 }
 
 class Archivist
@@ -42,15 +58,15 @@ class GateKeeper
   {
     $this->registry = new Registry();
   }
-  public function openGate($archivist, $description)
+  public function canThisArchivistSeeChangeHistory($archivist, $description)
   {
-    return $this->registry->canYouViewHistory($archivist, $description);
+    return $this->registry->canViewHistory($archivist, $description);
   }
 }
 
 class Registry
 {
-  public function canYouViewHistory($archivist, $description)
+  public function canViewHistory($archivist, $description)
   {
     return true;
   }
