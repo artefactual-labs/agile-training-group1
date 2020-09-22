@@ -13,6 +13,8 @@ function canCreateDescription()
   }
 }
 
+
+
 class Description
 {
   private
@@ -31,10 +33,7 @@ class Description
 
 class Archivist
 {
-  public function canYouViewHistory($description)
-  {
-    
-  }
+
 }
 
 class GateKeeper
@@ -43,11 +42,16 @@ class GateKeeper
   {
     $this->registry = new Registry();
   }
-  public function openGate($archivist)
+  public function openGate($archivist, $description)
   {
+    return $this->registry->canYouViewHistory($archivist, $description);
   }
 }
 
 class Registry
 {
+  public function canYouViewHistory($archivist, $description)
+  {
+    return true;
+  }
 }
