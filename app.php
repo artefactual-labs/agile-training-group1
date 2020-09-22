@@ -16,6 +16,14 @@ function canCreateDescription()
 
 class ReadingRoom
 {
+  private
+    $archivist;
+
+  public function __construct($archivist)
+  {
+    $this->archivist = $archivist;
+  }
+
   public function requestDescription()
   {
     
@@ -42,7 +50,7 @@ class Description
   {
     if ($gateKeeper->canThisArchivistSeeChangeHistory($archivist, $this))
     {
-      
+      printf("Change history\n");
     }
   }
 }
