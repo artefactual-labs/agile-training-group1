@@ -1,24 +1,33 @@
 <?php
 
-
+canCreateDescription();
+print("Test complete!\n");
 
 function canCreateDescription()
 {
   $myDescription = new Description(500);
-  if ($myDescription->viewDescription() !== "Id: 500")
+
+  if ($myDescription->getId() !== 501)
   {
-    // raise here
+    throw new exception("canCreateDescription failed");
   }
 }
 
-class Description()
+class Description
 {
   private
     $id = 0;
+
   public function __construct($id)
   {
     $this->id = $id;
   }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+
   public function viewDescription()
   {
     printf("Id: %s\n", $this->id);
