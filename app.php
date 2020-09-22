@@ -23,13 +23,31 @@ class Description
     $this->id = $id;
   }
 
-  public function getId()
-  {
-    return $this->id;
-  }
-
   public function viewDescription()
   {
     printf("Id: %s\n", $this->id);
   }
+}
+
+class Archivist
+{
+  public function canYouViewHistory($description)
+  {
+    
+  }
+}
+
+class GateKeeper
+{
+  public function __construct()
+  {
+    $this->registry = new Registry();
+  }
+  public function openGate($archivist)
+  {
+  }
+}
+
+class Registry
+{
 }
