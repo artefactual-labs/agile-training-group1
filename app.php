@@ -17,16 +17,21 @@ function canCreateDescription()
 class ReadingRoom
 {
   private
-    $archivist;
+    $archivist,
+    $description,
+    $gateKeeper;
 
-  public function __construct($archivist)
+  public function __construct($archivist, $description)
   {
     $this->archivist = $archivist;
+    $this->description = $description;
+    $this->gateKeeper = new GateKeeper();
   }
 
-  public function requestDescription()
+  public function showArchivistTheDescription()
   {
-    
+    $description->showMeYourSelf($this->archivist);
+    $description->showMeYourHistory($this->archivist, $this->gateKeeper);
   }
 }
 
@@ -41,12 +46,12 @@ class Description
     $this->id = $id;
   }
 
-  public function viewDescription()
+  public function showMeYourself($archivist)
   {
     printf("Id: %s\n", $this->id);
   }
 
-  public function viewHistory()
+  public function showMeYourHistory($archivist, $gateKeeper)
   {
     if ($gateKeeper->canThisArchivistSeeChangeHistory($archivist, $this))
     {
@@ -57,7 +62,7 @@ class Description
 
 class Archivist
 {
-
+  
 }
 
 class GateKeeper
